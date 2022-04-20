@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
+    <div class="row">
+    {% for post in posts %}
+        <div class="col-sm">
+            <a href="{{ url_for('post', post_id=post['id']) }}">
+            <!-- <h2>{{ post['title'] }}</h2> -->
+                <div class="card" style="width: 18rem;">
+                    <img src="static/pics/1.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ post['title'] }}</h2>
+                    </div>
+                </div>
+            </a>
+            <span class="badge badge-primary">{{ post['created'] }}</span>
+            <a href="{{ url_for('edit', id=post['id']) }}">
+                <span class="badge badge-warning">Edit</span>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
